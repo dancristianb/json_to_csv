@@ -19,5 +19,21 @@ describe JsonParser do
             #     count = row.split(",").size
             # end
         end
+
+        # movies.json specific tests
+        it "doesn't contain movies" do
+            expect(subject.include?("movies")).to eq(false)
+        end
+        it "contains the \"description\" key" do
+            expect(subject.include?("description")).to eq(true)
+        end
+        it "contains \"Star Trek: Discovery\"" do
+            expect(subject.include?("Star Trek: Discovery")).to eq(true)
+        end
+        it "includes quotations when needed" do
+            expect(subject.include?("\"Action, Adventure, Drama\"")).to \
+                eq(true)
+        end
+
     end
 end
