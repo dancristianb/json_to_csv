@@ -14,7 +14,10 @@ describe JsonParser do
             expect(subject).not_to be_empty
         end
         it "is a valid CSV" do
-            # expect(subject).to eq(String)
+            # this won't work since we've got commas in the text as well
+            # subject.each_line do |row|
+            #     count = row.split(",").size
+            # end
         end
     end
 end
