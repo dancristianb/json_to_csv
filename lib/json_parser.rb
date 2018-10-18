@@ -15,7 +15,8 @@ class JsonParser
         else
           # the item we just added is followed by hash/array
           # so we need to remove it (like movies:)
-          @@keys.pop if index.even?
+          # this needs to be revisited as it pops out :year as well
+          @@keys.pop if index.odd?
           get_keys(element.flatten)
         end
       end
