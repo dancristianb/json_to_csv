@@ -21,11 +21,14 @@ describe JsonParser do
         end
 
         # movies.json specific tests
-        it "doesn't contain movies" do
+        it "doesn't contain the movies key" do
             expect(subject.include?("movies")).to eq(false)
         end
-        it "contains the \"description\" key" do
+        it "contains all the expected keys" do
+            expect(subject.include?("title")).to eq(true)
+            expect(subject.include?("genres")).to eq(true)
             expect(subject.include?("description")).to eq(true)
+            expect(subject.include?("year")).to eq(true)
         end
         it "contains \"Star Trek: Discovery\"" do
             expect(subject.include?("Star Trek: Discovery")).to eq(true)
@@ -34,6 +37,5 @@ describe JsonParser do
             expect(subject.include?("\"Action, Adventure, Drama\"")).to \
                 eq(true)
         end
-
     end
 end
